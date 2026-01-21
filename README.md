@@ -1,13 +1,16 @@
 # 📦 RSTF (Rust Secure Transport Format)
 
-[![Release](https://img.shields.io/github/v/release/warchs/rstf-rust)](https://github.com/warchs/rstf-rust/releases)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Platform](https://img.shields.io/badge/platform-Win%20%7C%20Linux%20%7C%20Mac%20%7C%20Android-green)](https://github.com/warchs/rstf-rust/releases)
-[![GitHub Stars](https://img.shields.io/github/stars/warchs/rstf-rust?style=social)](https://github.com/warchs/rstf-rust)
-
 <div align="center">
-  <img src="image/rstf.png" width="200" alt="Logo" style="max-width: 100%; height: auto;">
+  <img src="image/rstf.png" width="400" alt="Logo" style="height: 200px; max-width: 100%;">
+
+  <br />
+
+  [![Release](https://img.shields.io/github/v/release/warchs/rstf-rust)](https://github.com/warchs/rstf-rust/releases)
+  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+  [![Platform](https://img.shields.io/badge/platform-Win%20%7C%20Linux%20%7C%20Mac%20%7C%20Android-green)](https://github.com/warchs/rstf-rust/releases)
+  [![GitHub Stars](https://img.shields.io/github/stars/warchs/rstf-rust?style=social)](https://github.com/warchs/rstf-rust)
 </div>
+
 
 **RSTF** is a high-performance file archiving utility built in Rust, prioritizing data security through modern encryption and efficient compression. It leverages cutting-edge cryptographic standards to safeguard files against emerging threats.
 
