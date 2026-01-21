@@ -1,0 +1,40 @@
+# --- Build Artifacts ---
+# The /target directory contains all compiled code, dependencies, and binaries.
+/target/
+
+# --- IDEs & Editors ---
+# JetBrains (IntelliJ, RustRover, etc.)
+.idea/
+*.iml
+
+# Visual Studio Code
+.vscode/
+# Optional: If you want to share VSCode settings, comment out the line above 
+# and uncomment the ones below:
+# !.vscode/settings.json
+# !.vscode/tasks.json
+# !.vscode/launch.json
+# !.vscode/extensions.json
+
+# Vim/Emacs temp files
+*~
+*.swp
+*.swo
+
+# --- OS Generated Files ---
+.DS_Store
+Thumbs.db
+
+# --- Environment & Secrets ---
+.env
+.env*.local
+
+# --- Cargo/Lock Files ---
+# For BINARY projects, you SHOULD commit Cargo.lock.
+# For LIBRARY projects, it is often ignored (uncomment the line below if it's a library).
+# Cargo.lock
+
+# --- Backup/Profiling ---
+**/*.rs.bk
+debug/
+
