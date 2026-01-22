@@ -1,7 +1,7 @@
 # 📦 RSTF (Rust Secure Transport Format)
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/warchs/warchs/refs/heads/main/image/rstf.png" width="420" alt="Logo" style="height: 200px; max-width: 100%;">
+  <img src="https://raw.githubusercontent.com/warchs/warchs/refs/heads/main/image/rstf.png" width="400" alt="Logo">
 
   <br />
 
@@ -37,77 +37,114 @@ Conventional archiving tools often employ outdated security measures vulnerable 
 
 
 ### 📱 Android (Termux) Users
-No root privileges required. Install the pre-compiled binary directly (choose based on your device architecture):
+No root privileges required. Install the pre-compiled binary directly (choose based on your device architecture)
 
+###### A. For ARM64 devices (most Android phones):
 ```bash
-# For ARM64 devices (most Android phones)
-wget -q https://github.com/warchs/rstf-rust/releases/latest/download/rstf-android-arm64 -O $PREFIX/bin/rstf
-
-chmod +x $PREFIX/bin/rstf
-
-rstf --version
-
-# For x86_64 emulators (if using Android emulator)
-wget -q https://github.com/warchs/rstf-rust/releases/latest/download/rstf-android-x86_64 -O $PREFIX/bin/rstf
-
-chmod +x $PREFIX/bin/rstf
-
-rstf --version
-
-# Help
-rstf --help
+wget https://github.com/warchs/rstf-rust/releases/latest/download/rstf-android-arm64 -O $PREFIX/bin/rstf
 ```
 
+```bash
+chmod +x $PREFIX/bin/rstf
+```
+
+```bash
+rstf --version
+```
+###### B. For x86_64 emulators (if using Android emulator):
+```bash
+wget https://github.com/warchs/rstf-rust/releases/latest/download/rstf-android-x86_64 -O $PREFIX/bin/rstf
+```
+
+```bash
+chmod +x $PREFIX/bin/rstf
+```
+
+```bash
+rstf --version
+```
+
+```bash
+rstf --help
+```
+---
 ### 🐧 Linux Users
-Install system-wide (choose based on your architecture for best compatibility):
+Install system-wide (choose based on your architecture for best compatibility)
+
+###### A. For x86_64 systems (most common):
+```bash
+sudo wget https://github.com/warchs/rstf-rust/releases/latest/download/rstf-linux-amd64 -O /usr/local/bin/rstf
+```
 
 ```bash
-# For x86_64 systems (most common)
-sudo wget -q https://github.com/warchs/rstf-rust/releases/latest/download/rstf-linux-amd64 -O /usr/local/bin/rstf
-
 sudo chmod +x /usr/local/bin/rstf
+```
 
+```bash
 rstf --version
+```
 
-# For ARM64 systems (e.g., Raspberry Pi or ARM servers)
-sudo wget -q https://github.com/warchs/rstf-rust/releases/latest/download/rstf-linux-arm64 -O /usr/local/bin/rstf
+###### B. For ARM64 systems (e.g., Raspberry Pi or ARM servers): 
+```bash
+sudo wget https://github.com/warchs/rstf-rust/releases/latest/download/rstf-linux-arm64 -O /usr/local/bin/rstf
+```
 
+```bash
 sudo chmod +x /usr/local/bin/rstf
+```
 
+```bash
 rstf --version
+```
+###### C. For static musl versions (no dependencies, portable):
+```bash
+sudo wget https://github.com/warchs/rstf-rust/releases/latest/download/rstf-linux-amd64-musl -O /usr/local/bin/rstf
+```
 
-# For static musl versions (no dependencies, portable)
-sudo wget -q https://github.com/warchs/rstf-rust/releases/latest/download/rstf-linux-amd64-musl -O /usr/local/bin/rstf
-
+```bash
 sudo chmod +x /usr/local/bin/rstf
+```
 
+```bash
 rstf --version
+```
 
-# Help
+```bash
 rstf --help
 ```
+---
 
 ### 🍎 macOS Users
-Compatible with Intel and Apple Silicon (choose based on your chip):
+Compatible with Intel and Apple Silicon (choose based on your chip)
+###### A. For Intel Macs (x86_64):
+```bash
+sudo wget https://github.com/warchs/rstf-rust/releases/latest/download/rstf-macos-amd64 -O /usr/local/bin/rstf
+```
 
 ```bash
-# For Intel Macs (x86_64)
-sudo wget -q https://github.com/warchs/rstf-rust/releases/latest/download/rstf-macos-amd64 -O /usr/local/bin/rstf
-
 sudo chmod +x /usr/local/bin/rstf
+```
 
+```bash
 rstf --version
+```
+###### B. For Apple Silicon (ARM64, M1/M2 chips):
+```bash
+sudo wget https://github.com/warchs/rstf-rust/releases/latest/download/rstf-macos-arm64 -O /usr/local/bin/rstf
+```
 
-# For Apple Silicon (ARM64, M1/M2 chips)
-sudo wget -q https://github.com/warchs/rstf-rust/releases/latest/download/rstf-macos-arm64 -O /usr/local/bin/rstf
-
+```bash
 sudo chmod +x /usr/local/bin/rstf
+```
 
+```bash
 rstf --version
+```
 
-# Help
+```bash
 rstf --help
 ```
+---
 
 ### 💻 Windows Users
 1. Download the appropriate .exe from the [Release Page](https://github.com/warchs/rstf-rust/releases) (MSVC recommended for compatibility, GNU as alternative).
@@ -121,10 +158,10 @@ rstf --help
 
 ```bash
 # Basic usage (Prompts for password securely)
-rstf pack ./sensitive_data
+rstf pack sensitive_data
 
 # Advanced Mode (Maximum compression + Keyfile + Wipe originals)
-rstf pack ./important_file.db --level 22 --wipe -k ./key_image.jpg
+rstf pack ./important_file.py --level 22 --wipe -k ./key_image.jpg
 ```
 > Note: The --wipe flag securely deletes source files after successful archiving.
 
@@ -135,13 +172,13 @@ rstf pack ./important_file.db --level 22 --wipe -k ./key_image.jpg
 rstf unpack ./sensitive_data.rstf
 
 # Unpack with Keyfile
-rstf unpack ./important_file.rstf -k ./key_image.jpg
+rstf unpack important_file.rstf -k ./key_image.jpg
 ```
 
 3. 📜 List Contents View archive contents without extraction. Credentials are needed since metadata is encrypted.
 
 ```bash
-rstf list ./backup.rstf
+rstf list backup.rstf
 ```
 
 ---
@@ -226,16 +263,17 @@ A big thank you to the **Rust programming language** and its incredible communit
 * **Argon2** (for Argon2id KDF) for robust password hashing against brute-force attacks.
 * **ChaCha20-Poly1305** (via RustCrypto) for secure, authenticated encryption.
 * **Rand** for cryptographically secure random number generation.
-* And the broader open-source community for tools like `cross` for cross-compilation and GitHub Actions for CI/CD.
+* And the broader open-source community for tools like `cross` for cross-compilation and **GitHub** Actions for **CI/CD**.
 
-Your contributions keep the Rust ecosystem thriving—thank you! If you've contributed or inspired this project, feel free to reach out.
+Your contributions keep the **Rust ecosystem thriving**—thank you! If you've contributed or inspired this project, feel free to reach out.
 
 
 ---
 
 ##  📄 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ---
 
 Build with 🥰 for everyone
+
