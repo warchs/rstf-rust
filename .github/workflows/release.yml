@@ -94,6 +94,11 @@ jobs:
         with:
           targets: ${{ matrix.target }}
 
+      # Added: Install musl-tools for musl targets (provides x86_64-linux-musl-gcc)
+      - name: Install musl-tools (for musl targets)
+        if: matrix.target == 'x86_64-unknown-linux-musl' || matrix.target == 'aarch64-unknown-linux-musl'
+        run: sudo apt-get update && sudo apt-get install -y musl-tools
+
       # Fixed: Use 'packages' to install Android NDK (valid input for the action)
       - name: Install Android NDK (for Android targets)
         if: matrix.target == 'aarch64-linux-android' || matrix.target == 'x86_64-linux-android'
