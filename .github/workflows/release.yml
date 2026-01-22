@@ -94,13 +94,13 @@ jobs:
         with:
           targets: ${{ matrix.target }}
 
-      # Added: Install Android NDK for Android targets (only if needed)
+      # Fixed: Use 'packages' to install Android NDK (valid input for the action)
       - name: Install Android NDK (for Android targets)
         if: matrix.target == 'aarch64-linux-android' || matrix.target == 'x86_64-linux-android'
         uses: android-actions/setup-android@v3
         with:
-          # Install NDK for cross-compilation; adjust version as needed
-          ndk-version: '25.2.9519653'
+          # Install NDK via packages; adjust version as needed
+          packages: 'ndk;25.2.9519653'
 
       # Updated: Pin cross version for reproducibility
       - name: Install Cross (if needed)
