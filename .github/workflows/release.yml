@@ -102,10 +102,10 @@ jobs:
           # Install NDK via packages; adjust version as needed
           packages: 'ndk;25.2.9519653'
 
-      # Updated: Pin cross version for reproducibility
+      # Reverted: Install cross from Git (original and reliable method)
       - name: Install Cross (if needed)
         if: matrix.use_cross
-        run: cargo install cross --version 0.2.9
+        run: cargo install cross --git https://github.com/cross-rs/cross
 
       # Updated: Add error handling and verification
       - name: Build release binary
