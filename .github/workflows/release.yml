@@ -94,22 +94,39 @@ jobs:
         with:
           targets: ${{ matrix.target }}
 
+      # Added: Install Android NDK for Android targets (only if needed)
+      - name: Install Android NDK (for Android targets)
+        if: matrix.target == 'aarch64-linux-android' || matrix.target == 'x86_64-linux-android'
+        uses: android-actions/setup-android@v3
+        with:
+          # Install NDK for cross-compilation; adjust version as needed
+          ndk-version: '25.2.9519653'
+
+      # Updated: Pin cross version for reproducibility
       - name: Install Cross (if needed)
         if: matrix.use_cross
-        run: cargo install cross --git https://github.com/cross-rs/cross
+        run: cargo install cross --version 0.2.9
 
+      # Updated: Add error handling and verification
       - name: Build release binary
         shell: bash
         run: |
           BUILD_CMD=${{ matrix.use_cross && 'cross' || 'cargo' }}
           $BUILD_CMD build --release --target ${{ matrix.target }}
+          # Verify the binary was created
+          if [ ! -f "target/${{ matrix.target }}/release/${{ matrix.binary_name }}" ]; then
+            echo "Error: Binary not found at target/${{ matrix.target }}/release/${{ matrix.binary_name }}"
+            exit 1
+          fi
 
       - name: Rename binary for distribution
         shell: bash
         run: |
           mv target/${{ matrix.target }}/release/${{ matrix.binary_name }} ${{ matrix.asset_name }}
 
+      # Updated: Use a more recent version of the action and add error handling
       - name: Upload binaries to Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2  # Updated to v2 for better stability
         with:
           files: ${{ matrix.asset_name }}
+          fail_on_unmatched_files: true  # Fail if the file isn't found
