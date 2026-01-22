@@ -41,7 +41,7 @@ No root privileges required. Install the pre-compiled binary directly (choose ba
 
 ```bash
 # For ARM64 devices (most Android phones)
-wget -q https://github.com/warchs/rstf-rust/releases/latest/download/rstf-android-aarch64 -O $PREFIX/bin/rstf
+wget -q https://github.com/warchs/rstf-rust/releases/latest/download/rstf-android-arm64 -O $PREFIX/bin/rstf
 
 chmod +x $PREFIX/bin/rstf
 
