@@ -94,25 +94,20 @@ jobs:
         with:
           targets: ${{ matrix.target }}
 
-      # Added: Install musl-tools for musl targets (provides x86_64-linux-musl-gcc)
       - name: Install musl-tools (for musl targets)
         if: matrix.target == 'x86_64-unknown-linux-musl' || matrix.target == 'aarch64-unknown-linux-musl'
         run: sudo apt-get update && sudo apt-get install -y musl-tools
 
-      # Fixed: Use 'packages' to install Android NDK (valid input for the action)
       - name: Install Android NDK (for Android targets)
         if: matrix.target == 'aarch64-linux-android' || matrix.target == 'x86_64-linux-android'
         uses: android-actions/setup-android@v3
         with:
-          # Install NDK via packages; adjust version as needed
           packages: 'ndk;25.2.9519653'
 
-      # Reverted: Install cross from Git (original and reliable method)
       - name: Install Cross (if needed)
         if: matrix.use_cross
         run: cargo install cross --git https://github.com/cross-rs/cross
 
-      # Updated: Add error handling and verification
       - name: Build release binary
         shell: bash
         run: |
@@ -129,9 +124,8 @@ jobs:
         run: |
           mv target/${{ matrix.target }}/release/${{ matrix.binary_name }} ${{ matrix.asset_name }}
 
-      # Updated: Use a more recent version of the action and add error handling
       - name: Upload binaries to Release
-        uses: softprops/action-gh-release@v2  # Updated to v2 for better stability
+        uses: softprops/action-gh-release@v2 
         with:
           files: ${{ matrix.asset_name }}
-          fail_on_unmatched_files: true  # Fail if the file isn't found
+          fail_on_unmatched_files: true  # Fail if the file isn't foundd
