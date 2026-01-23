@@ -18,7 +18,7 @@
 
 ---
 
-## ⚡ Why RSTF?
+## Why RSTF?
 
 Conventional archiving tools often employ outdated security measures vulnerable to contemporary attacks. **RSTF** stands out by integrating robust, forward-looking cryptography.
 
@@ -28,15 +28,15 @@ Conventional archiving tools often employ outdated security measures vulnerable 
 | **Key Derivation**  | **Argon2id** (Memory-Hard)             | PBKDF2 (Susceptible to GPU Attacks) | None / Weak     |
 | **Metadata**        | **Fully Encrypted**                    | Visible (Optional Encryption)       | Visible         |
 | **Compression**     | **Zstd** (Multithreaded)               | LZMA (Resource-Intensive)           | Deflate         |
-| **Keyfile Support** | ✅ **Native**                           | ❌ No                                | ❌ No            |
-| **Mobile Native**   | ✅ **Android/Termux Binary**            | ❌ Requires App                      | ❌ Requires App  |
+| **Keyfile Support** |  **Native**                           |  No                                |  No            |
+| **Mobile Native**   |  **Android/Termux Binary**            |  Requires App                      |  Requires App  |
 
 
 ---
-## 📥 Installation
+## Installation
 
 
-### 📱 Android (Termux) Users
+### Android (Termux) Users
 No root privileges required. Install the pre-compiled binary directly (choose based on your device architecture)
 
 ###### A. For ARM64 devices (most Android phones):
@@ -68,7 +68,7 @@ rstf --version
 rstf --help
 ```
 ---
-### 🐧 Linux Users
+### Linux Users
 Install system-wide (choose based on your architecture for best compatibility)
 
 ###### A. For x86_64 systems (most common):
@@ -114,7 +114,7 @@ rstf --help
 ```
 ---
 
-### 🍎 macOS Users
+### MacOS Users
 Compatible with Intel and Apple Silicon (choose based on your chip)
 ###### A. For Intel Macs (x86_64):
 ```bash
@@ -146,15 +146,15 @@ rstf --help
 ```
 ---
 
-### 💻 Windows Users
+### Windows Users
 1. Download the appropriate .exe from the [Release Page](https://github.com/warchs/rstf-rust/releases) (MSVC recommended for compatibility, GNU as alternative).
 2. Open Command Prompt or PowerShell in the download folder.
 3. Run: `.\rstf-windows-amd64.exe --help` (or `.\rstf-windows-amd64-gnu.exe --help` for GNU version). (Optional: Add the folder to your PATH for easier access).
 
 ---
 
-## 📖 Usage Guide
-#### 1. 🔒 Pack (Encrypt & Compress) Securely archive files or directories.
+##  Usage Guide
+#### 1. Pack (Encrypt & Compress) Securely archive files or directories.
 
 ###### Basic usage (Prompts for password securely):
 ```bash
@@ -168,7 +168,7 @@ rstf pack ./important_file.py --level 22 --wipe -k ./key_image.jpg
 ```
 > Note: The --wipe flag securely deletes source files after successful archiving.
 
-#### 2. 🔓 Unpack (Decrypt & Extract) Restore archived data. Provide the password (and keyfile if used).
+#### 2. Unpack (Decrypt & Extract) Restore archived data. Provide the password (and keyfile if used).
 
 ###### Basic unpack:
 
@@ -181,7 +181,7 @@ rstf unpack ./sensitive_data.rstf
 rstf unpack important_file.rstf -k ./key_image.jpg
 ```
 
-#### 3. 📜 List Contents View archive contents without extraction. Credentials are needed since metadata is encrypted.
+#### 3. List Contents View archive contents without extraction. Credentials are needed since metadata is encrypted.
 
 ```bash
 rstf list backup.rstf
@@ -189,7 +189,7 @@ rstf list backup.rstf
 
 ---
 
-## 🤝 Contributing
+## Contributing
 We welcome contributions from the community! RSTF is an open-source project, and your input helps improve security, performance, and usability. Here's how to get involved:
 
 ### Ways to Contribute
@@ -235,12 +235,12 @@ Use GitHub Actions or tools like `cross` for cross-platform testing.
 * Ensure all changes pass tests and are well-documented.
 * For security-related changes, discuss in issues first.
 
-Thank you for contributing to RSTF! 🌟
+Thank you for contributing to RSTF!
 
 
 ---
 
-## 🛠️ Technical Details
+## Technical Details
 
 RSTF implements an **Encrypt-then-MAC** approach using modern cryptographic primitives:
 
@@ -251,12 +251,12 @@ RSTF implements an **Encrypt-then-MAC** approach using modern cryptographic prim
 
 ---
 
-## ⚠️ Important Security Notice
+## Important Security Notice
 **This software contains no backdoors.** Loss of your password or keyfile will make data irrecoverable. RSTF's cryptography is designed to resist brute-force attacks. Always secure backups and use strong, unique passwords.
 
 ---
 
-## 👤 Author
+## Author
 
 **William Nathanael** (warchs)
 
@@ -268,7 +268,7 @@ RSTF implements an **Encrypt-then-MAC** approach using modern cryptographic prim
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 A big thank you to the **Rust programming language** and its incredible community for providing a safe, fast, and productive ecosystem that made RSTF possible. Special thanks to the developers and maintainers of key crates that power RSTF:
 
 * **Zstd** (compression library) for efficient, multithreaded data compression.
@@ -282,9 +282,9 @@ Your contributions keep the **Rust ecosystem thriving**—thank you! If you've c
 
 ---
 
-##  📄 License
+## License
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-Build with 🥰 for everyone
+Build with love for everyone
