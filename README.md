@@ -1,4 +1,4 @@
-# 📦 RSTF (Rust Secure Transport Format)
+#### Rust Secure Transport Format
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/warchs/warchs/refs/heads/main/image/rstf.png" width="400" alt="Logo">
@@ -22,14 +22,14 @@
 
 Conventional archiving tools often employ outdated security measures vulnerable to contemporary attacks. **RSTF** stands out by integrating robust, forward-looking cryptography.
 
-| Feature | 📦 RSTF (This Tool) | 🤐 7-Zip | 🗄️ ZIP |
-| :--- | :--- | :--- | :--- |
-| **Encryption** | **XChaCha20-Poly1305** (IETF Standard) | AES-256 | AES / ZipCrypto |
-| **Key Derivation** | **Argon2id** (Memory-Hard) 🛡️ | PBKDF2 (Susceptible to GPU Attacks) | None / Weak |
-| **Metadata** | **Fully Encrypted** 🔒 | Visible (Optional Encryption) | Visible |
-| **Compression** | **Zstd** (Multithreaded) 🚀 | LZMA (Resource-Intensive) | Deflate |
-| **Keyfile Support** | ✅ **Native** | ❌ No | ❌ No |
-| **Mobile Native** | ✅ **Android/Termux Binary** | ❌ Requires App | ❌ Requires App |
+| Feature             | RSTF (This Tool)                       | 7-Zip                               | ZIP             |
+| :------------------ | :------------------------------------- | :---------------------------------- | :-------------- |
+| **Encryption**      | **XChaCha20-Poly1305** (IETF Standard) | AES-256                             | AES / ZipCrypto |
+| **Key Derivation**  | **Argon2id** (Memory-Hard)             | PBKDF2 (Susceptible to GPU Attacks) | None / Weak     |
+| **Metadata**        | **Fully Encrypted**                    | Visible (Optional Encryption)       | Visible         |
+| **Compression**     | **Zstd** (Multithreaded)               | LZMA (Resource-Intensive)           | Deflate         |
+| **Keyfile Support** | ✅ **Native**                           | ❌ No                                | ❌ No            |
+| **Mobile Native**   | ✅ **Android/Termux Binary**            | ❌ Requires App                      | ❌ Requires App  |
 
 
 ---
@@ -154,28 +154,34 @@ rstf --help
 ---
 
 ## 📖 Usage Guide
-1. 🔒 Pack (Encrypt & Compress) Securely archive files or directories.
+#### 1. 🔒 Pack (Encrypt & Compress) Securely archive files or directories.
+
+###### Basic usage (Prompts for password securely):
+```bash
+rstf pack sensitive_data
+```
+
+###### Advanced Mode (Maximum compression + Keyfile + Wipe originals):
 
 ```bash
-# Basic usage (Prompts for password securely)
-rstf pack sensitive_data
-
-# Advanced Mode (Maximum compression + Keyfile + Wipe originals)
 rstf pack ./important_file.py --level 22 --wipe -k ./key_image.jpg
 ```
 > Note: The --wipe flag securely deletes source files after successful archiving.
 
-2. 🔓 Unpack (Decrypt & Extract) Restore archived data. Provide the password (and keyfile if used).
+#### 2. 🔓 Unpack (Decrypt & Extract) Restore archived data. Provide the password (and keyfile if used).
+
+###### Basic unpack:
 
 ```bash
-# Basic unpack
 rstf unpack ./sensitive_data.rstf
+```
+###### Unpack with Keyfile:
 
-# Unpack with Keyfile
+```bash
 rstf unpack important_file.rstf -k ./key_image.jpg
 ```
 
-3. 📜 List Contents View archive contents without extraction. Credentials are needed since metadata is encrypted.
+#### 3. 📜 List Contents View archive contents without extraction. Credentials are needed since metadata is encrypted.
 
 ```bash
 rstf list backup.rstf
@@ -198,6 +204,9 @@ We welcome contributions from the community! RSTF is an open-source project, and
 
 ```bash
 git clone https://github.com/warchs/rstf-rust.git
+```
+
+```bash
 cd rstf-rust
 ```
 
@@ -211,6 +220,9 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 ```bash
 cargo build --release
+```
+
+```bash
 cargo test
 ```
 
@@ -251,7 +263,7 @@ RSTF implements an **Encrypt-then-MAC** approach using modern cryptographic prim
 * Independent Developer and Cybersecurity Enthusiast
 * This README and the entire project were manually crafted by a human developer, drawing from personal experience in Rust programming and cryptography. No automated tools, bots, or AI were used in its creation to ensure authenticity and originality.
 * [GitHub Profile](https://github.com/warchs)
-
+* [Twitter Profile](https://x.com/NathanaelD29241)
 * [Personal Website]()
 
 ---
@@ -276,4 +288,3 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ---
 
 Build with 🥰 for everyone
-
